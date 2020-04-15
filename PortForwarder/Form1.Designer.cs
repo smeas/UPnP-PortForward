@@ -37,6 +37,7 @@
 			this.privatePortBox = new System.Windows.Forms.NumericUpDown();
 			this.portsLinkedCheck = new System.Windows.Forms.CheckBox();
 			this.settingsGroup = new System.Windows.Forms.GroupBox();
+			this.resetSettingsButton = new System.Windows.Forms.Button();
 			this.natDevicesList = new System.Windows.Forms.ListBox();
 			this.scanButton = new System.Windows.Forms.Button();
 			this.createMappingButton = new System.Windows.Forms.Button();
@@ -85,8 +86,8 @@
 			this.label3.Size = new System.Drawing.Size(82, 13);
 			this.label3.TabIndex = 2;
 			this.label3.Text = "Refresh Interval";
-			this.toolTip1.SetToolTip(this.label3, "The interval in seconds at which to refresh the port mapping\'s lifetime (0 is ne" +
-        "ver)");
+			this.toolTip1.SetToolTip(this.label3, "The interval in seconds at which to refresh the port mapping\'s lifetime (0 is nev" +
+        "er)");
 			// 
 			// lifetimeBox
 			// 
@@ -214,6 +215,7 @@
 			// 
 			// settingsGroup
 			// 
+			this.settingsGroup.Controls.Add(this.resetSettingsButton);
 			this.settingsGroup.Controls.Add(this.label2);
 			this.settingsGroup.Controls.Add(this.lifetimeBox);
 			this.settingsGroup.Controls.Add(this.label3);
@@ -231,6 +233,17 @@
 			this.settingsGroup.TabIndex = 13;
 			this.settingsGroup.TabStop = false;
 			this.settingsGroup.Text = "Options";
+			// 
+			// resetSettingsButton
+			// 
+			this.resetSettingsButton.Location = new System.Drawing.Point(238, 0);
+			this.resetSettingsButton.Name = "resetSettingsButton";
+			this.resetSettingsButton.Size = new System.Drawing.Size(57, 23);
+			this.resetSettingsButton.TabIndex = 13;
+			this.resetSettingsButton.Text = "Default";
+			this.toolTip1.SetToolTip(this.resetSettingsButton, "Restore default options");
+			this.resetSettingsButton.UseVisualStyleBackColor = true;
+			this.resetSettingsButton.Click += new System.EventHandler(this.ResetSettingsButton_Click);
 			// 
 			// natDevicesList
 			// 
@@ -500,6 +513,7 @@
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label targetGatewayInfo;
 		private System.Windows.Forms.ToolTip toolTip1;
+		private System.Windows.Forms.Button resetSettingsButton;
 	}
 }
 

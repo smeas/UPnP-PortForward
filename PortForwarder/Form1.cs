@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Mono.Nat;
+using PortForwarder.Properties;
 using Timer = System.Timers.Timer;
 
 namespace PortForwarder {
@@ -84,6 +85,8 @@ namespace PortForwarder {
 		#region Event handlers
 
 		private async void Form1_OnLoad(object sender, EventArgs e) {
+			LoadSettings();
+			
 			NatUtility.DeviceFound += NatUtilityOnDeviceFound;
 			NatUtility.DeviceLost += NatUtilityOnDeviceLost;
 
@@ -98,11 +101,13 @@ namespace PortForwarder {
 		}
 
 		private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
-			if (natDevice == null) return;
+			SaveSettings();
 
-			// Execute synchronously to ensure that it completes.
-			// Run on another thread to avoid locking up the program. (synchronization context deadlock?)
-			Task.Run(RemovePortMappings).Wait(3000);
+			if (natDevice != null) {
+				// Execute synchronously to ensure that it completes.
+				// Run on another thread to avoid locking up the program forever. (synchronization context deadlock?)
+				Task.Run(RemovePortMappings).Wait(3000);
+			}
 		}
 
 		private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
@@ -174,6 +179,10 @@ namespace PortForwarder {
 
 		private void ExternalIpInfo_Click(object sender, EventArgs e) {
 			Clipboard.SetText(externalIpInfo.Text);
+		}
+
+		private void ResetSettingsButton_Click(object sender, EventArgs e) {
+			ResetSettings();
 		}
 
 		#endregion
@@ -372,6 +381,33 @@ namespace PortForwarder {
 			portInfo.Text = "";
 			lifetimeInfo.Text = "";
 			refreshIntervalInfo.Text = "";
+		}
+
+
+		private void LoadSettings() {
+			Settings s = Settings.Default;
+			lifetimeBox.Value = s.Lifetime;
+			refreshIntervalBox.Value = s.RefreshInterval;
+			protocolBox.Text = s.Protocol;
+			publicPortBox.Value = s.PublicPort;
+			privatePortBox.Value = s.PrivatePort;
+			portsLinkedCheck.Checked = s.PortsLinked;
+		}
+
+		private void SaveSettings() {
+			Settings s = Settings.Default;
+			s.Lifetime = (int)lifetimeBox.Value;
+			s.RefreshInterval = (int)refreshIntervalBox.Value;
+			s.Protocol = protocolBox.Text;
+			s.PublicPort = (int)publicPortBox.Value;
+			s.PrivatePort = (int)privatePortBox.Value;
+			s.PortsLinked = portsLinkedCheck.Checked;
+			s.Save();
+		}
+
+		private void ResetSettings() {
+			Settings.Default.Reset();
+			LoadSettings();
 		}
 
 
