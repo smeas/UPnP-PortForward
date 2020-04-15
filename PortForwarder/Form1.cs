@@ -242,10 +242,13 @@ namespace PortForwarder {
 			else {
 				// Either TCP or UDP
 				Protocol protocol = Protocol.Tcp;
-				if (protocolString == "UDP")
+				if (protocolString == "UDP") {
 					protocol = Protocol.Udp;
-				else if (protocolString != "TCP")
+				}
+				else if (protocolString != "TCP") {
 					Debug.Assert(false, "Bad protocol value", "Got: {0}", protocolString);
+					protocolString = "TCP";
+				}
 
 				referenceMappings[0] = new Mapping(protocol, privatePort, publicPort, lifetime, DefaultDescription);
 				referenceMappings[1] = null;
