@@ -37,6 +37,6 @@ using System.Runtime.InteropServices;
 
 namespace PortForwarder {
 	internal static class AssemblyInfo {
-		internal const string Version = "1.3.3.0";
+		internal const string Version = "1.3.4.0";
 	}
 }

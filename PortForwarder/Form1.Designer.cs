@@ -75,7 +75,7 @@
 			this.label2.Size = new System.Drawing.Size(43, 13);
 			this.label2.TabIndex = 1;
 			this.label2.Text = "Lifetime";
-			this.toolTip1.SetToolTip(this.label2, "The lifetime in seconds for the port mapping. (0 is forever)");
+			this.toolTip1.SetToolTip(this.label2, "The lifetime in seconds for the port mapping (0 is forever)");
 			// 
 			// label3
 			// 
@@ -85,7 +85,7 @@
 			this.label3.Size = new System.Drawing.Size(82, 13);
 			this.label3.TabIndex = 2;
 			this.label3.Text = "Refresh Interval";
-			this.toolTip1.SetToolTip(this.label3, "The interval in seconds at which to refresh the port mapping\'s lifetime. (0 is ne" +
+			this.toolTip1.SetToolTip(this.label3, "The interval in seconds at which to refresh the port mapping\'s lifetime (0 is ne" +
         "ver)");
 			// 
 			// lifetimeBox
@@ -142,7 +142,7 @@
 			this.label4.Size = new System.Drawing.Size(46, 13);
 			this.label4.TabIndex = 7;
 			this.label4.Text = "Protocol";
-			this.toolTip1.SetToolTip(this.label4, "The type of traffic the port mapping should allow.");
+			this.toolTip1.SetToolTip(this.label4, "The type of traffic the port mapping should allow");
 			// 
 			// label5
 			// 
@@ -152,7 +152,7 @@
 			this.label5.Size = new System.Drawing.Size(58, 13);
 			this.label5.TabIndex = 8;
 			this.label5.Text = "Public Port";
-			this.toolTip1.SetToolTip(this.label5, "The public port of the mapping.");
+			this.toolTip1.SetToolTip(this.label5, "The public port for the mapping");
 			// 
 			// label6
 			// 
@@ -162,7 +162,7 @@
 			this.label6.Size = new System.Drawing.Size(62, 13);
 			this.label6.TabIndex = 9;
 			this.label6.Text = "Private Port";
-			this.toolTip1.SetToolTip(this.label6, "The private port of the mapping.");
+			this.toolTip1.SetToolTip(this.label6, "The private port for the mapping");
 			// 
 			// publicPortBox
 			// 
@@ -208,7 +208,7 @@
 			this.portsLinkedCheck.Size = new System.Drawing.Size(58, 17);
 			this.portsLinkedCheck.TabIndex = 12;
 			this.portsLinkedCheck.Text = "Linked";
-			this.toolTip1.SetToolTip(this.portsLinkedCheck, "Use the same public/private ports.");
+			this.toolTip1.SetToolTip(this.portsLinkedCheck, "Use the same public/private ports");
 			this.portsLinkedCheck.UseVisualStyleBackColor = true;
 			this.portsLinkedCheck.CheckedChanged += new System.EventHandler(this.PortsLinkedCheck_CheckedChanged);
 			// 
@@ -248,7 +248,7 @@
 			this.scanButton.Size = new System.Drawing.Size(75, 23);
 			this.scanButton.TabIndex = 16;
 			this.scanButton.Text = "Scan";
-			this.toolTip1.SetToolTip(this.scanButton, "Scan for supported gateways.");
+			this.toolTip1.SetToolTip(this.scanButton, "Scan for supported NAT devices");
 			this.scanButton.UseVisualStyleBackColor = true;
 			this.scanButton.Click += new System.EventHandler(this.ScanButton_Click);
 			// 
@@ -259,7 +259,7 @@
 			this.createMappingButton.Size = new System.Drawing.Size(105, 23);
 			this.createMappingButton.TabIndex = 17;
 			this.createMappingButton.Text = "Add Mapping";
-			this.toolTip1.SetToolTip(this.createMappingButton, "Create the port mapping.");
+			this.toolTip1.SetToolTip(this.createMappingButton, "Create the port mapping");
 			this.createMappingButton.UseVisualStyleBackColor = true;
 			this.createMappingButton.Click += new System.EventHandler(this.CreateMappingButton_Click);
 			// 
@@ -270,7 +270,7 @@
 			this.removeMappingButton.Size = new System.Drawing.Size(105, 23);
 			this.removeMappingButton.TabIndex = 18;
 			this.removeMappingButton.Text = "Remove Mapping";
-			this.toolTip1.SetToolTip(this.removeMappingButton, "Remove the port mapping.");
+			this.toolTip1.SetToolTip(this.removeMappingButton, "Remove the port mapping");
 			this.removeMappingButton.UseVisualStyleBackColor = true;
 			this.removeMappingButton.Click += new System.EventHandler(this.RemoveMappingButton_Click);
 			// 
@@ -283,7 +283,7 @@
 			this.natDevicesGroup.Size = new System.Drawing.Size(302, 122);
 			this.natDevicesGroup.TabIndex = 19;
 			this.natDevicesGroup.TabStop = false;
-			this.natDevicesGroup.Text = "Target Gateway/Router";
+			this.natDevicesGroup.Text = "NAT/Router";
 			// 
 			// groupBox1
 			// 
@@ -402,7 +402,7 @@
 			this.label1.Size = new System.Drawing.Size(61, 13);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "External IP:";
-			this.toolTip1.SetToolTip(this.label1, "The external/public IP or WAN address of the gateway/router.");
+			this.toolTip1.SetToolTip(this.label1, "External/public/WAN address of the NAT/router");
 			// 
 			// externalIpInfo
 			// 
@@ -414,7 +414,7 @@
 			this.externalIpInfo.Size = new System.Drawing.Size(53, 13);
 			this.externalIpInfo.TabIndex = 1;
 			this.externalIpInfo.Text = "Unknown";
-			this.toolTip1.SetToolTip(this.externalIpInfo, "Click to copy.");
+			this.toolTip1.SetToolTip(this.externalIpInfo, "Click to copy");
 			this.externalIpInfo.Click += new System.EventHandler(this.ExternalIpInfo_Click);
 			// 
 			// label10
@@ -422,10 +422,10 @@
 			this.label10.AutoSize = true;
 			this.label10.Location = new System.Drawing.Point(6, 16);
 			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(52, 13);
+			this.label10.Size = new System.Drawing.Size(73, 13);
 			this.label10.TabIndex = 3;
-			this.label10.Text = "Gateway:";
-			this.toolTip1.SetToolTip(this.label10, "The IP address of the selected gateway/router.");
+			this.label10.Text = "NAT Address:";
+			this.toolTip1.SetToolTip(this.label10, "IP address of the selected NAT/router");
 			// 
 			// targetGatewayInfo
 			// 
