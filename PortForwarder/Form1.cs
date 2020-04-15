@@ -86,6 +86,8 @@ namespace PortForwarder {
 		private async void Form1_OnLoad(object sender, EventArgs e) {
 			NatUtility.DeviceFound += NatUtilityOnDeviceFound;
 			NatUtility.DeviceLost += NatUtilityOnDeviceLost;
+
+			// Initial NAT device scan.
 			initialScan = true;
 			await ScanNatDevices();
 			initialScan = false;
@@ -93,17 +95,9 @@ namespace PortForwarder {
 			if (natDeviceEntries.Count == 0) {
 				ShowMessage("No supported NAT device detected!", MessageBoxIcon.Exclamation);
 			}
-
-			//// Auto select if there is only one target.
-			//if (natDevicesList.Items.Count == 1)
-			//	natDevicesList.SelectedIndex = 0;
 		}
 
 		private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
-			//if (natDevice != null)
-			//	await RemoveMappingsWithUI(); // await causes the form to close before the operation completes
-			//	RemovePortMappings().GetAwaiter().GetResult(); // Run synchronously to ensure that it completes.
-			
 			if (natDevice == null) return;
 
 			// Execute synchronously to ensure that it completes.
