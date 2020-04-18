@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Mono.Nat;
@@ -17,7 +10,7 @@ using Timer = System.Timers.Timer;
 
 namespace PortForwarder {
 	public partial class Form1 : Form {
-		class NatDeviceEntry {
+		private class NatDeviceEntry {
 			public INatDevice Device { get; }
 
 			public string DisplayName {
@@ -39,9 +32,15 @@ namespace PortForwarder {
 			public override bool Equals(object obj) {
 				return obj is NatDeviceEntry entry && entry.Device == Device;
 			}
+
+			public override int GetHashCode() {
+				return Device != null ? Device.GetHashCode() : 0;
+			}
 		}
 
+		// Scan duration in milliseconds.
 		private const int NatScanDuration = 3000;
+		// Description of created port mappings.
 		private const string DefaultDescription = "UPnP Port Forwarder Rule";
 
 		private INatDevice natDevice;
@@ -92,7 +91,7 @@ namespace PortForwarder {
 
 			// Initial NAT device scan.
 			initialScan = true;
-			await ScanNatDevices();
+			await ScanNatDevices(NatScanDuration);
 			initialScan = false;
 
 			if (natDeviceEntries.Count == 0) {
@@ -162,7 +161,7 @@ namespace PortForwarder {
 		}
 
 		private async void ScanButton_Click(object sender, EventArgs e) {
-			await ScanNatDevices();
+			await ScanNatDevices(NatScanDuration);
 		}
 
 		private async void CreateMappingButton_Click(object sender, EventArgs e) {
@@ -189,13 +188,14 @@ namespace PortForwarder {
 
 		// Nat device
 
-		private async Task ScanNatDevices() {
+		private async Task ScanNatDevices(int scanDuration) {
 			// Enable nat device discovery for a while.
 			scanButton.Enabled = false;
-			//NatUtility.StartDiscovery(NatProtocol.Upnp);
+			scanButton.Text = "Scanning...";
 			NatUtility.StartDiscovery();
-			await Task.Delay(NatScanDuration);
+			await Task.Delay(scanDuration);
 			NatUtility.StopDiscovery();
+			scanButton.Text = "Scan";
 			scanButton.Enabled = true;
 		}
 

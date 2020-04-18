@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
@@ -32,11 +31,9 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion(PortForwarder.AssemblyInfo.Version)]
-[assembly: AssemblyFileVersion(PortForwarder.AssemblyInfo.Version)]
+[assembly: AssemblyVersion(AssemblyInfo.Version)]
+[assembly: AssemblyFileVersion(AssemblyInfo.Version)]
 
-namespace PortForwarder {
-	internal static class AssemblyInfo {
-		internal const string Version = "1.4.0.0";
-	}
+internal static class AssemblyInfo {
+	internal const string Version = "1.4.0.1";
 }
