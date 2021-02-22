@@ -8,8 +8,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("GraddPort")]
-[assembly: AssemblyCopyright("Copyright © Gradd 2020")]
+[assembly: AssemblyProduct("")]
+[assembly: AssemblyCopyright("Copyright © Jonatan Johansson 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -35,5 +35,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion(AssemblyInfo.Version)]
 
 internal static class AssemblyInfo {
-	internal const string Version = "1.4.0.1";
+	internal const string Version = "1.4.0.2";
 }
